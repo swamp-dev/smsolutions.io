@@ -1,0 +1,256 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-gray-900 text-gray-100;
+    font-family: 'Inter var', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-primary hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5;
+  }
+
+  .section {
+    @apply relative py-16 md:py-24 overflow-hidden;
+  }
+
+  .heading {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6;
+  }
+
+  .subheading {
+    @apply text-lg md:text-xl text-gray-300 mb-8;
+  }
+
+  .nav-link {
+    @apply text-gray-300 hover:text-primary transition-colors duration-300 relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .card {
+    @apply bg-gray-800/80 p-6 rounded-lg transition-all duration-500 hover:shadow-lg hover:shadow-primary/20 backdrop-blur-sm;
+    transform: translateY(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+  }
+
+  .logo-transition {
+    @apply transition-all duration-300;
+  }
+
+  .scroll-indicator {
+    @apply absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce;
+  }
+
+  .contact-form-container {
+    @apply bg-gray-800/80 backdrop-blur-sm p-6 md:p-8 rounded-xl border border-gray-700/50 transition-all duration-300 hover:border-primary/50;
+  }
+
+  /* Form styles */
+  .form-input {
+    @apply w-full h-12 bg-gray-900/90 border border-gray-700 rounded-md px-4 text-white focus:border-primary transition-all duration-300;
+  }
+
+  .form-textarea {
+    @apply w-full bg-gray-900/90 border border-gray-700 rounded-md px-4 py-3 text-white focus:border-primary transition-all duration-300 min-h-[150px] resize-y;
+  }
+
+  .form-label {
+    @apply block text-sm font-medium text-gray-300 mb-2;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideUp 0.8s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .bg-grid-white {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%2300FF9D' stroke-width='2' stroke-opacity='0.1'%3E%3Ccircle cx='400' cy='400' r='380'/%3E%3Ccircle cx='400' cy='400' r='320'/%3E%3Ccircle cx='400' cy='400' r='260'/%3E%3Cpath d='M400 80L680 240L680 560L400 720L120 560L120 240Z'/%3E%3Cpath d='M400 160L616 280L616 520L400 640L184 520L184 280Z'/%3E%3Cpath d='M400 80L680 560L120 560Z'/%3E%3Cpath d='M400 720L680 240L120 240Z'/%3E%3Cpath d='M400 80L680 240M680 240L680 560M680 560L400 720M400 720L120 560M120 560L120 240M120 240L400 80'/%3E%3Cpath d='M400 160L616 280M616 280L616 520M616 520L400 640M400 640L184 520M184 520L184 280M184 280L400 160'/%3E%3Cpath d='M400 80L400 720M120 240L680 560M680 240L120 560'/%3E%3C/g%3E%3C/svg%3E");
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 200vh;
+    height: 200vh;
+    transform-origin: center center;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 0;
+    animation: metatronSpin 120s linear infinite;
+  }
+
+  .geometric-bg {
+    @apply absolute inset-0 opacity-5 pointer-events-none;
+    background-image: 
+      linear-gradient(60deg, #00FF9D 25%, transparent 25%),
+      linear-gradient(-60deg, #00FF9D 25%, transparent 25%),
+      linear-gradient(60deg, transparent 75%, #00FF9D 75%),
+      linear-gradient(-60deg, transparent 75%, #00FF9D 75%);
+    background-size: 30px 30px;
+    background-position: 0 0, 0 15px, 15px -15px, -15px 0px;
+    animation: geometricMove 20s linear infinite;
+  }
+
+  .animate-gradient {
+    animation: gradient 15s ease-in-out infinite;
+    background-size: 400% 400%;
+  }
+}
+
+@keyframes metatronSpin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes geometricMove {
+  0% {
+    background-position: 0 0, 0 15px, 15px -15px, -15px 0px;
+  }
+  100% {
+    background-position: 30px 0, 30px 15px, 45px -15px, 15px 0px;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-950;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-700 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-600;
+}
+
+/* Form focus effects */
+input:focus, textarea:focus {
+  @apply outline-none shadow-[0_0_0_2px_rgba(0,255,157,0.5)];
+  border-color: #00FF9D;
+}
+
+/* Update the hero section to properly layer content over the background */
+#home {
+  position: relative;
+  z-index: 1;
+}
+
+/* Mobile menu styles */
+.mobile-menu {
+  @apply fixed inset-0 bg-gray-950/95 backdrop-blur-md z-50 transition-all duration-300 ease-in-out;
+}
+
+.mobile-menu.hidden {
+  @apply translate-x-full;
+}
+
+.mobile-menu-link {
+  display: block;
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 1.25rem;
+  color: #D1D5DB;
+  transition: all 0.3s ease;
+  animation: slideIn 0.5s ease-out forwards;
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.mobile-menu-link:hover {
+  color: #00FF9D;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

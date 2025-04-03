@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="32" height="32" fill="#111111"/>
+  
+  <!-- Outer hexagon -->
+  <path d="M16 4L28 12V24L16 32L4 24V12L16 4Z" stroke="#00FF9D" stroke-width="1.5" fill="none"/>
+  
+  <!-- Inner hexagon -->
+  <path d="M16 8L24 14V22L16 28L8 22V14L16 8Z" stroke="#00FF9D" stroke-width="1.5" fill="none"/>
+  
+  <!-- Center hexagon -->
+  <path d="M16 12L20 16V20L16 24L12 20V16L16 12Z" stroke="#00FF9D" stroke-width="1.5" fill="none"/>
+</svg> 
