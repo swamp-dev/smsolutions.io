@@ -9,8 +9,10 @@ const Contact: React.FC = () => {
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
-    const formData = new FormData(e.currentTarget);
-    
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
     try {
       const response = await fetch('https://formspree.io/f/xqapyqao', {
         method: 'POST',
@@ -20,13 +22,17 @@ const Contact: React.FC = () => {
         },
       });
 
+      const data = await response.json().catch(() => null);
+
       if (response.ok) {
         setSubmitStatus('success');
-        e.currentTarget.reset();
+        form.reset();
       } else {
+        console.error('Formspree error:', data?.errors || response.statusText);
         setSubmitStatus('error');
       }
-    } catch (error) {
+    } catch (err) {
+      console.error('Network/JS error:', err);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
